@@ -8,7 +8,7 @@ bool isPalindrome(string str, int start, int end){
 }
 
 int main() {
-	string s = "GeekskeeG";
+	string s = "redivider";
 	cout<<isPalindrome(s, 0, s.length() -1) ? "true" : "false";
 	return 0;
 }
