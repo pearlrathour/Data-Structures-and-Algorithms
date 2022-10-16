@@ -15,14 +15,29 @@ struct Node{
 
 
 Node *rev1(Node *head,int k){
-    Node *curr=head , *prev=NULL ,*next=NULL;
-    int count =0;
-    while(curr != NULL){
-        next=curr->next;
+    Node *curr=head,*prevFirst=NULL;
+    bool isFirstPass=true;
+
+    while(curr!=NULL){
+        Node *first=curr,*prev=NULL;
+        int count=0;
+
+        while(curr!=NULL&&count<k){
+        Node *next=curr->next;
         curr->next=prev;
         prev=curr;
         curr=next;
-        count ++;
+        count++;
+        }
+
+        if(isFirstPass){
+            head=prev;
+            isFirstPass=false;
+        }
+        else{
+            prevFirst->next=prev;
+        }
+        prevFirst=first;
     }
     return head;
 }

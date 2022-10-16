@@ -4,6 +4,7 @@
 int main(){
     int arr[10]={1,9,2,8,9,0,2,5,1,4};
     int size=10;
+    // O(n**3)
     for(int i=0;i<size;i++){
         for(int j=i+1;j<size;j++){
             if(arr[i]==arr[j]){

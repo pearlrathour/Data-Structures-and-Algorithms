@@ -1,94 +1,70 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+
+#define ll long long
+
 using namespace std;
 
-// Function to return precedence of operators
-int prec(char c)
+int Isdigit(char dig)
 {
-    if (c == '^')
-        return 3;
-    else if (c == '/' || c == '*')
-        return 2;
-    else if (c == '+' || c == '-')
-        return 1;
-    else
-        return -1;
+	if(dig>='0' && dig<='9')
+		return 1;
+	else
+		return 0;
 }
 
-void infix_to_postfix(string s)
+int Isoperator(char op)
 {
-
-    stack<char> temp_stack;
-    string ans;
-
-    for (int i = 0; i < s.length(); i++)
-    {
-        char c = s[i];
-
-        //if operand,insert into result
-        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
-            ans+= c;
-
-
-        //if ( push into stack
-        else if (c == '(')
-            temp_stack.push('(');
-
-
-        //if )
-        //Repeat POP from stack,add to result untill ) is found
-        //remove )
-        else if (c == ')')
-        {
-            while (temp_stack.top() != '(')
-            {
-                ans += temp_stack.top();
-                temp_stack.pop();
-            }
-            temp_stack.pop();
-        }
-
-        // If an operator X is scanned
-        //repeat POP from stack, add to each operator with same or high precedence than X
-        //add X to stack
-        else
-        {
-            while (!temp_stack.empty() && prec(s[i]) <= prec(temp_stack.top()))
-            {
-                if (c == '^' && temp_stack.top() != '^')
-                    break;
-                else
-                {
-                    ans += temp_stack.top();
-                    temp_stack.pop();
-                }
-            }
-            temp_stack.push(c);
-        }
-    }
-
-    // Pop all the remaining elements from the stack
-    while (!temp_stack.empty())
-    {
-        ans += temp_stack.top();
-        temp_stack.pop();
-    }
-
-    cout<< ans <<endl;
+	if(op=='+' || op=='-' || op=='*' || op=='/' || op=='^')
+		return 1;
+	else
+		return 0;
 }
 
-void eval(string eq){
-    
+int Operation(char op,int op1,int op2)
+{
+	switch(op)
+	{
+		case '+': return op1+op2;
+		case '-': return op1-op2;
+		case '*': return op1*op2;
+		case '/': return op1/op2;
+		case '^': return op1^op2;
+		default : break;
+	}
+	return 0;
 }
 
-int main()
+int EvalPostfix(string str)
 {
-    string exp;
-    cout<<"Enter expression to be evaluated : \n";
-    cin>>exp;
-    // infix_to_postfix(exp);
-    cout<<"\nEvaluated result : \n";
-    infix_to_postfix(exp);
-    string eq=infix_to_postfix(exp);
-    eval(eq);
-    return 0;
+	stack<int>S;
+
+	for(ll i=0;i<str.size();i++){
+		if(str[i]==' ')
+			continue;
+		else if(Isoperator(str[i])){
+			int op2=S.top();
+			S.pop();
+			int op1=S.top();
+			S.pop();
+			int ans = Operation(str[i],op1,op2);
+			S.push(ans);
+		}
+		else if(Isdigit(str[i])){
+			int op=0;
+			while(i<str.size() && Isdigit(str[i])){
+				op= op*10 +(str[i]-'0');
+				i++;
+			}
+			S.push(op);
+		}
+	}
+	return S.top();
+}
+
+int main(){
+	string str;
+	getline(cin,str);
+	cout<<EvalPostfix(str);
+
+	return 0;
 }
