@@ -40,17 +40,17 @@ void comp(Node *head,Node *head1){
     cout<<"YES"<<endl;
 }
 
-bool isPalindrome(Node *head){
-    stack<char> st;
-    for(Node *curr=head;curr!=NULL;curr=curr->next)
-        st.push(curr->data);
-    for(Node *curr=head;curr!=NULL;curr=curr->next){
-        if(st.top()!=curr->data)
-            return false;
-        st.pop();
-    }
-    return true;
-}
+// bool isPalindrome(Node *head){
+//     stack<char> st;
+//     for(Node *curr=head;curr!=NULL;curr=curr->next)
+//         st.push(curr->data);
+//     for(Node *curr=head;curr!=NULL;curr=curr->next){
+//         if(st.top()!=curr->data)
+//             return false;
+//         st.pop();
+//     }
+//     return true;
+// }
 
 void print(Node *head){
     Node *curr=head;

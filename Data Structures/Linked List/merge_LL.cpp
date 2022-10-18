@@ -22,7 +22,7 @@ Node *sortedmerge(Node *head1 , Node *head2){
     Node *head=NULL,*tail=NULL;
     if(head1->data <= head2->data){
         head=tail=head1;
-        head1=head1->next;
+        head1=head1->next;  
     }
     else{
         head=tail=head2;
@@ -30,7 +30,7 @@ Node *sortedmerge(Node *head1 , Node *head2){
     }
     while(head1!=NULL && head2!=NULL){
         if(head1->data <= head2->data){
-            tail->next=head1;
+            tail->next=head1;     
             tail=head1;
             head1=head1->next;
         }
