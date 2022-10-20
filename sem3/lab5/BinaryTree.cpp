@@ -1,91 +1,79 @@
-//Implement a binary tree and any traversal technique
+#include<bits/stdc++.h>
 
-//Implimenttaion of queue using Linked List
+#define ll long long
+#define MOD 1000000007
+#define vec vector<ll>
+#define pb push_back
+#define MIN INT_MIN
+#define MAX INT_MAX
 
-#include <iostream>
-using namespace std;
+using namespace std; 
 
-// Structure of each node of the tree
 struct Node{
 	int data;
-	struct node* left;
-	struct node* right;
-
-    // Val is the key or the value that
-    // has to be added to the data part
-    Node(int val){
-        data = val;
-        // Left and right child for node
-        // will be initialized to null
-        left = NULL;
-        right = NULL;
-    }
+	Node* left;
+	Node* right;
 };
 
-Node *Insert(Node *node, int val){
-    // If BST doesn't exist
-    // create a new node as root
-    // or it's reached when
-    // there's no any child node
-    // so we can insert a new node here
-    if(node == NULL)
-    {
-        node = new Node;
-        node->Key = key;
-        node->Left = NULL;
-        node->Right = NULL;
-        node->Parent = NULL;
-    }
-    // If the given key is greater than
-    // node's key then go to right subtree
-    else if(node->key < key){
-        node->Right = Insert(node->Right, key);
-        node->Right->Parent = node;
-    }
-    // If the given key is smaller than
-    // node's key then go to left subtree
-    else
-    {
-        node->Left = Insert(node->Left, key);
-        node->Left->Parent = node;
-    }
-
-
-
-void display( ){
-    
+Node* createNode(int data){
+	Node* new_node=new Node;
+	if(!new_node){
+		cout<<"OVERFLOW\n";
+		return NULL;
+	}
+	new_node->data=data;
+	new_node->left=NULL;
+	new_node->right=NULL;
+	return new_node;
 }
 
-int main(){
-    int usrchoice=0;
-    int val, k;
+Node* Insert(Node* root, int data){
+	if(root==NULL){
+		root=createNode(data);
+		return root;
+	}
+	queue<Node*> Q;
+	Q.push(root);
 
-    while (1){
-        cout << "\n\n1.Insert\n2.Delete\n3.Display\n4.Search\n5.Exit\n"<< endl;
-        cout << "Enter the choice of operation to be implemented : ";
-        cin >> usrchoice;
+	while(!Q.empty()){
+		Node* temp=Q.front();
+		Q.pop();
+		if(temp->left!=NULL)
+			Q.push(temp->left);
+		else{
+			temp->left=createNode(data);
+			return root;
+		}
 
-        switch (usrchoice){
-        case 1:
-            
-            break;
+		if(temp->right!=NULL){
+			Q.push(temp->right);
+		}
+		else{
+			temp->right=createNode(data);
+			return root;
+		}
+	}
+}
 
-        case 2:
-            
-            break;
-
-        case 3:
-            
-            break;
-
-        case 4:
-             exit(1);
-
-        default:
-            cout<<"Enter a valid choice : ";
-            break;
-           
-        }
-    }
-    return 0;
+void InOrder(Node* root)  //left-root-right (sorted order)
+{
+	if(root==NULL)
+		return;
+	InOrder(root->left);
+	cout<<root->data<<" ";
+	InOrder(root->right);
+}
+int main()
+{
+	Node *root=NULL;
+	
+	int n,num;
+    cout<<"Enter number of elements : ";
+	cin>>n; //no of elements to be inserted
+	for(int i=0;i<n;i++)
+	{
+		cin>>num;
+		root=Insert(root,num);
+	}
+	InOrder(root);
 }
