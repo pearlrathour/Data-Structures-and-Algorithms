@@ -1,79 +1,144 @@
-#include<bits/stdc++.h>
+// binary search tree
+#include <iostream>
+using namespace std;
 
-#define ll long long
-#define MOD 1000000007
-#define vec vector<ll>
-#define pb push_back
-#define MIN INT_MIN
-#define MAX INT_MAX
-
-using namespace std; 
-
-struct Node{
-	int data;
-	Node* left;
-	Node* right;
+struct node
+{
+	int key;
+	struct node *left, *right;
 };
 
-Node* createNode(int data){
-	Node* new_node=new Node;
-	if(!new_node){
-		cout<<"OVERFLOW\n";
-		return NULL;
-	}
-	new_node->data=data;
-	new_node->left=NULL;
-	new_node->right=NULL;
-	return new_node;
-}
-
-Node* Insert(Node* root, int data){
-	if(root==NULL){
-		root=createNode(data);
-		return root;
-	}
-	queue<Node*> Q;
-	Q.push(root);
-
-	while(!Q.empty()){
-		Node* temp=Q.front();
-		Q.pop();
-		if(temp->left!=NULL)
-			Q.push(temp->left);
-		else{
-			temp->left=createNode(data);
-			return root;
-		}
-
-		if(temp->right!=NULL){
-			Q.push(temp->right);
-		}
-		else{
-			temp->right=createNode(data);
-			return root;
-		}
-	}
-}
-
-void InOrder(Node* root)  //left-root-right (sorted order)
+struct node *newNode(int item)
 {
-	if(root==NULL)
-		return;
-	InOrder(root->left);
-	cout<<root->data<<" ";
-	InOrder(root->right);
+	struct node *temp = (struct node *)malloc(sizeof(struct node));
+	temp->key = item;
+	temp->left = temp->right = NULL;
+	return temp;
 }
+
+struct node *insert(struct node *node, int key){
+
+	if (node == NULL)
+		return newNode(key);
+
+	if (key < node->key)
+		node->left = insert(node->left, key);
+	else
+		node->right = insert(node->right, key);
+
+	return node;
+}
+
+void inorder(struct node *root)
+{
+	if (root != NULL)
+	{
+		inorder(root->left);
+		cout << root->key << " ";
+		inorder(root->right);
+	}
+}
+
+struct node *minValueNode(struct node *node)
+{
+	struct node *current = node;
+
+	while (current && current->left != NULL)
+		current = current->left;
+
+	return current;
+}
+
+struct node *deleteNode(struct node *root, int key)
+{
+
+	if (root == NULL)
+		return root;
+
+	if (key < root->key)
+		root->left = deleteNode(root->left, key);
+
+	else if (key > root->key)
+		root->right = deleteNode(root->right, key);
+
+	else
+	{
+
+		if (root->left == NULL and root->right == NULL)
+			return NULL;
+
+		else if (root->left == NULL)
+		{
+			struct node *temp = root->right;
+			free(root);
+			return temp;
+		}
+		else if (root->right == NULL)
+		{
+			struct node *temp = root->left;
+			free(root);
+			return temp;
+		}
+
+		struct node *temp = minValueNode(root->right);
+
+		root->key = temp->key;
+
+		root->right = deleteNode(root->right, temp->key);
+	}
+	return root;
+}
+
 int main()
 {
-	Node *root=NULL;
-	
-	int n,num;
-    cout<<"Enter number of elements : ";
-	cin>>n; //no of elements to be inserted
-	for(int i=0;i<n;i++)
+	struct node *root = NULL;
+	// root = insert(root, 50);
+	int number;
+	int cont = 1;
+	while (cont)
 	{
-		cin>>num;
-		root=Insert(root,num);
+		cout << " " << endl;
+		cout << "do you wish to A: insert a node B: delete a node?" << endl;
+		char wish;
+		cin >> wish;
+		if (wish == 'A' || wish == 'a')
+		{
+			cout << "what number you wish to insert?" << endl;
+			// inorder(root);
+			cout << " " << endl;
+			cin >> number;
+			root = insert(root, number);
+		}
+		else if (wish == 'B' || wish == 'b')
+		{
+			if (root == NULL)
+			{
+				cout << "empty tree" << endl;
+			}
+			else
+			{
+				cout << "what number you wish to delete?" << endl;
+				inorder(root);
+				cout << " " << endl;
+				cin >> number;
+				root = deleteNode(root, number);
+			}
+		}
+		else
+		{
+			cout << "wrong input" << endl;
+		}
+		cout << "press Y if you want to continue the operation" << endl;
+		char yes;
+		cin >> yes;
+		if (yes != 'y')
+		{
+			cont = 0;
+		}
+		cout << "inorder expression" << endl;
+		inorder(root);
+		cout << " " << endl;
 	}
-	InOrder(root);
+
+	return 0;
 }
