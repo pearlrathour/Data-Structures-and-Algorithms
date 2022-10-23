@@ -72,20 +72,17 @@ void print(Node *head){
     cout<<"NULL"<<endl;
 }
 
-void reverse(Node *head){
-    Node *curr=head,*rev;
-    cout<<"NULL <- ";
+Node *reverse(Node *head){
+    if(head==NULL && head->next ==NULL)
+        return head;
+    Node *prev=NULL,*curr=head;
     while(curr!=NULL){
-        cout<<curr->data<<" <-> ";
-        rev=curr;
-        curr=curr->next;
+        prev=curr->prev;
+        curr->prev=curr->next;
+        curr->next=prev;
+        curr=curr->prev;
     }
-    cout<<"NULL"<<endl<<endl<<"NULL <-> ";
-    while(rev!=NULL){
-        cout<<rev->data<<" <->";
-        rev=rev->prev;
-    }
-    cout<<"NULL"<<endl;
+    return prev->prev;
 }
 
 int main(){
@@ -129,7 +126,8 @@ int main(){
             break;
 
         case 6:
-            reverse(head);
+            head=reverse(head);
+            print(head);
             break;
 
         case 7:
