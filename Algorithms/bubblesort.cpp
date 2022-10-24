@@ -6,8 +6,7 @@ void bubblesort(int a[],int n){
     for(int i=0 ; i<n ; i++){
         int ptr=0;
         while(ptr<n-i-1){
-            if(a[ptr]>a[ptr+1])
-            {
+            if(a[ptr]>a[ptr+1]){
                 swap(a[ptr],a[ptr+1]);
                 flag=1;
             }
