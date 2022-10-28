@@ -8,9 +8,10 @@ int *arr=new int[n];
 void push(int val){
     if (top >= n - 1)
         cout << "Overflow !!!\n\n";
-    else
+    else{
         top++;
         arr[top]=val;
+    }
 }
 
 void peep(){
