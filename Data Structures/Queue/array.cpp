@@ -2,7 +2,7 @@
 using namespace std;
 int n;
 int front=0,rear=0;
-int *arr=new int(100);
+int *arr=new int(n);
 
 void Enqueue(int val){
     if(rear >= n){
@@ -19,7 +19,7 @@ void Dequeue(){
         return;
     }
     cout<<arr[front]<<endl;
-    for (int i=0;i<rear-1;i++) {
+    for (int i=front;i<rear-1;i++) {
         arr[i] = arr[i + 1];
     }
     rear--;
