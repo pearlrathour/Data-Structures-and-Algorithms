@@ -60,7 +60,7 @@ int main(){
     int val, k;
 
     while (1){
-        cout << "\n\n1.Display\n2.Insert\n3.Delete\n4.Exit\n"<< endl;
+        cout << "\n\n1.Display 2.Insert 3.Delete 4.Exit\n"<< endl;
         cout << "Enter the choice of operation to be implemented : ";
         cin >> usrchoice;
 

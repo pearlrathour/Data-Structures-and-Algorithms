@@ -16,38 +16,31 @@ struct Node
 	}
 };
 
-void Display(Node *root)
-{
-	if (root != NULL)
-	{
-		Display(root->left);
+void Display(Node *root){
+	if (root != NULL){
 		cout << root->key << "  ";
+		Display(root->left);
 		Display(root->right);
 	}
 }
 
-void LevelOrderTraversal(Node *root)
-{
+void LevelOrderTraversal(Node *root){
 	queue<Node *> q;
 	q.push(root);
 	q.push(NULL);   //end of 1st level
 
-	while (!q.empty())
-	{
+	while (!q.empty()){
 		Node *temp = q.front();
 		q.pop();
 
-		if (temp == NULL)
-		{
+		if (temp == NULL){
 			cout << endl;
-			if (!q.empty())
-			{
+			if (!q.empty()){
 				q.push(NULL);
 			}
 		}
 
-		else
-		{
+		else{
 			cout << temp->key << " ";
 			if (temp->left)
 				q.push(temp->left);
@@ -57,8 +50,7 @@ void LevelOrderTraversal(Node *root)
 	}
 }
 
-Node *Insert(Node *root)
-{
+Node *Insert(Node *root){
 	cout << "Enter Value to be entered : ";
 	int val;
 	cin >> val;
@@ -103,19 +95,16 @@ void Postorder(Node *root){
 }
 
 
-int main()
-{
+int main(){
 	Node *root = NULL;
 	int usrchoice = 0;
 
-	while (1)
-	{
+	while (1){
 		cout << "\n\n1.Display\n2.Level Order Traversal\n3.Insert\n4.Inorder\n5.Preorder\n6.Postorder\n7.Exit" << endl;
 		cout << "Enter the choice of operation to be implemented : ";
 		cin >> usrchoice;
 
-		switch (usrchoice)
-		{
+		switch (usrchoice){
 		case 1:
 			Display(root);
 			break;
