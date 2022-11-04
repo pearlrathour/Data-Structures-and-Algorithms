@@ -9,8 +9,7 @@ struct Node
 	Node *left, *right;
 
 	// Constructor
-	Node(int k)
-	{
+	Node(int k){
 		key = k;
 		left = right = NULL;
 	}
@@ -18,59 +17,51 @@ struct Node
 
 void Display(Node *root)
 {
-	if (root != NULL)
-	{
+	if (root != NULL){
 		Display(root->left);
 		cout << root->key << "  ";
 		Display(root->right);
 	}
 }
 
-void LevelOrderTraversal(Node *root)
-{
-	queue<Node *> q;
+void LevelOrderTraversal(Node *root){
+	queue<Node *>q;
 	q.push(root);
-	q.push(NULL);   //end of 1st level
+	q.push(NULL);
 
-	while (!q.empty())
-	{
-		Node *temp = q.front();
+	while(!q.empty()){
+		Node *temp=q.front();
 		q.pop();
-
-		if (temp == NULL)
-		{
-			cout << endl;
-			if (!q.empty())
-			{
+		if(temp==NULL){
+			cout<<endl;
+			if(!q.empty()){
 				q.push(NULL);
 			}
-		}
 
-		else
-		{
-			cout << temp->key << " ";
-			if (temp->left)
-				q.push(temp->left);
-			if (temp->right)
-				q.push(temp->right);
+			else{
+				cout<<temp->key<<" ";
+				if(temp->left)
+					q.push(temp->left);
+				if(temp->right)
+					q.push(temp->right);
+			}
 		}
 	}
 }
 
-Node *Insert(Node *root)
-{
-	cout << "Enter Value to be entered : ";
+Node *Insert(Node *root){
+	cout<<"Enter value to be entered : ";
 	int val;
-	cin >> val;
-	root = new Node(val);
+	cin>>val;
+	root=new Node(val);
 
-	if (val == -1)
+	if(val==-1)
 		return NULL;
 
-	cout << "Enter val to left of " << val << " : "<<endl;
-	root->left = Insert(root->left);
-	cout << "Enter val to right of " << val << " : "<<endl;
-	root->right = Insert(root->right);
+	cout<<"Enter value to left of "<<val<<" : ";
+	root->left=Insert(root->left);
+	cout<<"Enter value to right of "<<val<<" : ";
+	root->right=Insert(root->right);
 
 	return root;
 }

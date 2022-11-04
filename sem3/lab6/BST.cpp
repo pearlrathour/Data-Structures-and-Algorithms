@@ -66,7 +66,7 @@ Node *Delete(Node *root,int val){
 			return temp;
 		}
 
-		// If the node has two children
+		// If the node has two children 
 		Node*temp = minValueNode(root->right);
 
 		// Place the inorder successor in position of the node to be deleted
