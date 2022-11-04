@@ -49,6 +49,22 @@ void LevelOrderTraversal(Node *root){
 	}
 }
 
+int maxDepth(Node* root){
+	int depth;
+    if (root == NULL)
+        return 0;
+    else {
+        int lDepth = maxDepth(root->left);
+        int rDepth = maxDepth(root->right);
+
+        if (lDepth > rDepth)
+            depth=lDepth + 1;
+        else
+            depth=rDepth + 1;
+    }
+	return depth;
+}
+
 Node *Insert(Node *root){
 	cout<<"Enter value to be entered : ";
 	int val;
@@ -101,7 +117,7 @@ int main()
 
 	while (1)
 	{
-		cout << "\n\n1.Display\n2.Level Order Traversal\n3.Insert\n4.Inorder\n5.Preorder\n6.Postorder\n7.Exit" << endl;
+		cout << "\n\n1.Display\n2.Level Order Traversal\n3.Depth\n4.Insert\n5.Inorder\n6.Preorder\n7.Postorder\n8.Exit" << endl;
 		cout << "Enter the choice of operation to be implemented : ";
 		cin >> usrchoice;
 
@@ -116,23 +132,27 @@ int main()
 			break;
 
 		case 3:
+			cout<<maxDepth(root);
+			break;
+
+		case 4:
 			root = Insert(root);
 			Display(root);
 			break;
 
-		case 4:
+		case 5:
 			Inorder(root); //L Ro Ri
 			break;
 
-		case 5:
+		case 56:
 			Preorder(root); //Ro L Ri
 			break;
 
-		case 6:
+		case 7:
 			Postorder(root);  // L Ri Ro
 			break;
 
-		case 7:
+		case 8:
 			exit(1);
 
 		default:
