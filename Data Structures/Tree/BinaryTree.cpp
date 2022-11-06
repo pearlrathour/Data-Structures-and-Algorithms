@@ -53,7 +53,7 @@ int maxDepth(Node* root){
 	int depth;
     if (root == NULL)
         return 0;
-    else {
+    else{
         int lDepth = maxDepth(root->left);
         int rDepth = maxDepth(root->right);
 
@@ -63,6 +63,37 @@ int maxDepth(Node* root){
             depth=rDepth + 1;
     }
 	return depth;
+}
+
+int lheight(Node* root){
+    int ht = 0;
+    while(root){
+        ht++;
+        root=root->left;
+    }
+    return ht;
+}
+  
+int rheight(Node* root){
+    int ht = 0;
+    while(root){
+        ht++;
+        root=root->right;
+    }
+    return ht;
+}
+
+int TotalNodes(Node* root){
+    if (root == NULL)
+        return 0;
+    int lh = lheight(root);
+    int rh = rheight(root);
+
+    // If left and right heights are equal return 2^h(1<<h) -1
+    if (lh == rh)
+        return (1 << lh) - 1;
+    
+    return 1 + TotalNodes(root->left) + TotalNodes(root->right);
 }
 
 Node *Insert(Node *root){
@@ -117,7 +148,7 @@ int main()
 
 	while (1)
 	{
-		cout << "\n\n1.Display\n2.Level Order Traversal\n3.Depth\n4.Insert\n5.Inorder\n6.Preorder\n7.Postorder\n8.Exit" << endl;
+		cout << "\n\n1.Display\n2.Level Order Traversal\n3.Total Nodes\n4.Depth\n5.Insert\n6.Inorder\n7.Preorder\n8.Postorder\n9.Exit" << endl;
 		cout << "Enter the choice of operation to be implemented : ";
 		cin >> usrchoice;
 
@@ -132,27 +163,31 @@ int main()
 			break;
 
 		case 3:
-			cout<<maxDepth(root);
+			cout<<TotalNodes(root);
 			break;
 
 		case 4:
+			cout<<maxDepth(root);
+			break;
+
+		case 5:
 			root = Insert(root);
 			Display(root);
 			break;
 
-		case 5:
+		case 6:
 			Inorder(root); //L Ro Ri
 			break;
 
-		case 56:
+		case 7:
 			Preorder(root); //Ro L Ri
 			break;
 
-		case 7:
+		case 8:
 			Postorder(root);  // L Ri Ro
 			break;
 
-		case 8:
+		case 9:
 			exit(1);
 
 		default:

@@ -15,7 +15,6 @@ void Heapify(int A[],int n,int i){
  
     if (largest != i){
         swap(A[i],A[largest]);
- 
         // Heapify the affected sub-tree
         Heapify(A,n,largest);
     }
@@ -23,7 +22,6 @@ void Heapify(int A[],int n,int i){
 
 
 void HeapSort(int A[],int n){
-    // Build heap (rearrange array)
     for (int i = n / 2 - 1; i >= 0; i--)
         Heapify(A, n, i);
  
