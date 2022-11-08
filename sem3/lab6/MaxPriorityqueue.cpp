@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-vector v;
-// function for insertion in heap
-void Insert(int item){
+
+vector<int>v;
+
+void Insert(int item){                    
     v.push_back(item);
     long long i = v.size() - 1;
     if (i == 0)
@@ -49,7 +49,7 @@ void Print(){
     cout << "\n";
 }
 
-// function for getting the max element
+
 void Peek(){
     cout << "Max element : " << v[0] << "\n";
 }

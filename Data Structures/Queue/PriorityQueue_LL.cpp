@@ -11,15 +11,16 @@ struct Node{
         priority=p;
         next=NULL;
     }
-}
+};
 
-Node *head=NULL;
+Node *head=NULL;                         
 
 //O(n)
 Node* push(Node *head, int x, int p){
     Node *temp=new Node(x,p);
     Node *curr=head;
     if(head == NULL){
+        head=temp;
         return temp;
     }
     if(head->priority < p){
@@ -27,7 +28,7 @@ Node* push(Node *head, int x, int p){
         return temp;
     }
     else{
-        while(curr->next != NULL && curr->next->prioriy > p)
+        while(curr->next != NULL && curr->next->priority > p)
             curr=curr->next;
         
         temp->next=curr->next;
