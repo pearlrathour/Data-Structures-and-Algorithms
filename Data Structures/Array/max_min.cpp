@@ -10,7 +10,7 @@ struct Pair{
 //O(n) & O(1)
 //Comparisons- 1+n-2 to 1+2(n-2)
 Pair getMinMax1(int arr[], int n){
-	struct Pair minmax;
+	Pair minmax;
 	if (n == 1){
 		minmax.max = arr[0];
 		minmax.min = arr[0];	
@@ -40,7 +40,7 @@ Pair getMinMax1(int arr[], int n){
 //O(n) & O(logn)
 //3n/2 -2 
 Pair getMinMax2(int arr[], int low, int high){
-    struct Pair minmax, mml, mmr;
+    Pair minmax, mml, mmr;
     int mid;
  
     if (low == high) {

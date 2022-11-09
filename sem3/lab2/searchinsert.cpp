@@ -12,7 +12,7 @@ int main()
     cout << endl;
     int index_insert = 0;
 
-    int *arr = (int *)malloc((n + 1) * sizeof(int));
+    int *arr = new int(n);
     cout << "Enter the elements of the array" << endl;
     for (int i = 0; i <= n - 1; i++)
     {

@@ -1,22 +1,16 @@
 #include<iostream>
 using namespace std;
 
-void swap(int*x,int*y){
-    int temp;
-    temp=*x;
-    *x=*y;
-    *y=temp;
-} 
-
 int selection(int a[],int n){
     while(--n>0){
         int max=n;
-        for(int i=0 ; i<n ; i++){
-            if(a[i]>a[max])
+        for(int i=0;i<n;i++){
+            if(a[i]>a[max]){
                 max=i;
+            }
         }
-        if(max != n)
-            swap(&a[n],&a[max]);
+        if(max!=n)
+            swap(a[n],a[max]);
     }
     return 9;
 }

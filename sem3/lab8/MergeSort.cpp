@@ -1,18 +1,19 @@
 #include <iostream>
 using namespace std;
 
-void Merge(int array[], int const l, int const mid,int const r){
-    auto const subarr1 = mid - l + 1;
-    auto const subarr2 = r - mid;
+void Merge(int array[], int l, int mid, int r)
+{
+    int subarr1 = mid - l + 1;
+    int subarr2 = r - mid;
 
-    auto *larr = new int[subarr1],*rarr = new int[subarr2];
+    int *larr =new int[subarr1],*rarr =new int[subarr2];
 
-    for (auto i = 0; i < subarr1; i++)
+    for(int i = 0; i < subarr1; i++)
         larr[i] = array[l + i];
-    for (auto j = 0; j < subarr2; j++)
+    for(int j = 0; j < subarr2; j++)
         rarr[j] = array[mid + 1 + j];
 
-    auto indexOfsubarr1 = 0,indexOfsubarr2= 0;  
+    int indexOfsubarr1=0, indexOfsubarr2=0;
     int indexOfmergedarr = l;
 
     // Merge the temp arrays back into array[l..r]
@@ -57,7 +58,7 @@ void MergeSort(int array[], int const begin, int const end)
     if (begin >= end)
         return; // Returns recursively
 
-    auto mid = begin + (end - begin) / 2;
+    int mid = (end + begin) / 2;
     MergeSort(array, begin, mid);
     MergeSort(array, mid + 1, end);
     Merge(array, begin, mid, end);

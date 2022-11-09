@@ -19,14 +19,14 @@ int main()
     // Taking INPUT of Information:
     for (int i = 0; i < l; i++)
     {
-        cout << "For Student" << i + 1 << endl;
-        cout << "Enter name" << endl;
+        cout << "For Student : " << i + 1 << endl;
+        cout << "Enter name : ";
         cin >> info[i].name;
-        cout << "Enter Roll no." << endl;
+        cout << "Enter Roll no. : ";
         cin >> info[i].rollno;
-        cout << "Enter CGPI" << endl;
+        cout << "Enter CGPI : ";
         cin >> info[i].CGPI;
-        cout << "Enter Semester" << endl;
+        cout << "Enter Semester : ";
         cin >> info[i].Semester;
     }
 
@@ -46,7 +46,7 @@ int main()
     // Insert at kth position
     // Shifting elements of the info array
     int k1;
-    cout << "Enter the value of K" << endl;
+    cout << "Enter the value of K1" << endl;
     cin >> k1;
     student *info1 = new student[l + 1];
     for (int i = 0; i < l; i++)
@@ -63,8 +63,7 @@ int main()
         {
             info[i + 1] = info[i];
         }
-        cout << "Enter the info of the New Student" << endl
-             << endl;
+        cout << "Enter the info of the New Student" << endl<< endl;
         cout << "For Student " << k1 << endl;
         cout << "Enter name" << endl;
         cin >> info[k1 - 1].name;

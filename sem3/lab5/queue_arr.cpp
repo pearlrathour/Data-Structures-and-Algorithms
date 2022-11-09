@@ -2,9 +2,11 @@
 using namespace std;
 
 int queue[100], n = 100, front = -1, rear = -1;
+
+//O(1)
 void Insert(int val){
     if (front == -1)
-    front = 0;
+        front = 0;
     if (rear >= n - 1){
         cout << "Queue Overflow" << endl;
         return;
@@ -13,6 +15,7 @@ void Insert(int val){
     queue[rear] = val;
 }
 
+//O(1)
 void Delete(){
     if (front == -1 || front > rear){
         cout << "Queue Underflow ";
@@ -21,6 +24,8 @@ void Delete(){
     cout << "Element deleted from queue is : " << queue[front] << endl;
     front++;
 }
+
+//O(n)
 void Display(){
     if (front == -1){
         cout << "Queue is empty" << endl;
