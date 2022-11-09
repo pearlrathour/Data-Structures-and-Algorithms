@@ -11,7 +11,7 @@ int main(){
     }
     float average = 0;
     float sum = 0;
-    double a[n];
+    double a[n];    
     auto start1 = chrono::high_resolution_clock::now();
     ios_base::sync_with_stdio(false);
     for (int i = 0; i < n; i++){

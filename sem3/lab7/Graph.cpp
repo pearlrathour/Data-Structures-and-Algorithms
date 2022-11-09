@@ -37,7 +37,7 @@ int main(){
         if(src > v-1 || src<0 || dest > v-1|| dest<0)
             return -1;
         addEdge(adj,src,dest);
-        cout<<"Continue? (Y,N) : ";
+        cout<<"Continue? (for yes-1,for no-0) : ";
         cin>>cont;
     }
 	

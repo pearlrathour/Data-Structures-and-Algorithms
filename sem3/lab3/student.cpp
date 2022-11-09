@@ -1,10 +1,5 @@
-// Write a program to enter records of 5 students, which should contain fields like roll no , name , CGPI , semester.
-// a)List all record of student having CGPI greater than k.
-// b)Insert a new record of student at kth position and print final record
-
 #include <iostream>
 using namespace std;
-
 struct student
 {
     string name;
@@ -16,7 +11,6 @@ struct student
 int main()
 {
     int l;
-    // printf("Enter no of students : ");
     cout << "Enter no of students :" << endl;
     cin >> l;
     // struct student info[100];
@@ -43,7 +37,6 @@ int main()
     cout << "Student with CGPI greater than " << k << endl;
     for (int i = 0; i < l; i++)
     {
-
         if (info[i].CGPI > k)
         {
             cout << i + 1 << " " << info[i].name << " " << info[i].rollno << " " << info[i].CGPI << " " << info[i].Semester << endl;
@@ -70,8 +63,8 @@ int main()
         {
             info[i + 1] = info[i];
         }
-
-        cout << "Enter the info of the New Student" << endl << endl;
+        cout << "Enter the info of the New Student" << endl
+             << endl;
         cout << "For Student " << k1 << endl;
         cout << "Enter name" << endl;
         cin >> info[k1 - 1].name;

@@ -5,6 +5,8 @@ int top = -1;
 int n;
 int *arr=new int[n];
 
+
+//O(1)
 void push(int val){
     if (top >= n - 1)
         cout << "Overflow !!!\n\n";
@@ -14,6 +16,8 @@ void push(int val){
     }
 }
 
+
+//O(1)
 void peep(){
     if (top <= -1)
         cout << "Empty Array !!!\n\n";
@@ -21,6 +25,8 @@ void peep(){
         cout<<arr[top];
 }
 
+
+//O(1)
 void pop(){
     if (top >=0){
         cout<<arr[top];

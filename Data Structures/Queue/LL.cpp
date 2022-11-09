@@ -14,6 +14,7 @@ struct Node{
 
 Node *rear=NULL,*front=NULL;
 
+//O(1)
 Node *Enqueue(Node *rear,int val){
     Node *temp=new Node(val);
     if(rear==NULL){
@@ -28,7 +29,7 @@ Node *Enqueue(Node *rear,int val){
     return temp;
 }
 
-
+//O(1)
 Node *Dequeue(Node *front){
     if(front == NULL)
         return NULL;
@@ -42,7 +43,7 @@ Node *Dequeue(Node *front){
     return front; 
 }
 
-
+//O(n)
 void display(Node *front){
     Node *curr=front;
     while(curr != NULL){

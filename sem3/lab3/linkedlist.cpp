@@ -7,7 +7,7 @@ struct Node{
     int data;
     struct Node *next;
 };
-struct Node *head;
+Node *head=NULL;
 
 void display_linked_list()
 {
@@ -142,13 +142,10 @@ int main()
 
     int usrchoice=0;
     int val, k;
-    head = new Node;
-    cout << "Enter the value of head" << endl;
-    cin >> head->data;
-    head->next = NULL;
+    
 
     while (1){
-        cout << "\n\nEnter\n 1.Insert Node at the front\n2.Insert Node at the last\n3.Delete the first Node\n4.Delete the last Node\n5.Insert at Kth position\n6.Delete at the kth position\n7.Exit\n\n"
+        cout << "\n\nEnter\n1.Insert Node at the front\n2.Insert Node at the last\n3.Delete the first Node\n4.Delete the last Node\n5.Insert at Kth position\n6.Delete at the kth position\n7.Exit\n\n"
             << endl;
 
         cout << "Enter the choice of operation to be implemented\n\n"
