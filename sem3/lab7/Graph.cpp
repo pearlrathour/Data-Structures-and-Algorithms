@@ -18,7 +18,7 @@ void displayGraph(vector<int> adj[], int v){
 void transposeGraph(vector<int> adj[],vector<int> transpose[], int v){
 	for (int i = 0; i < v; i++){
 		for (int j = 0; j < adj[i].size(); j++)
-			addEdge(transpose, adj[i][j], i);
+			addEdge(transpose, adj[i][j], i);        
     }
 }
 
@@ -37,7 +37,7 @@ int main(){
         if(src > v-1 || src<0 || dest > v-1|| dest<0)
             return -1;
         addEdge(adj,src,dest);
-        cout<<"Continue? (for yes-1,for no-0) : ";
+        cout<<"Continue? (for yes-1 , for no-0) : ";
         cin>>cont;
     }
 	

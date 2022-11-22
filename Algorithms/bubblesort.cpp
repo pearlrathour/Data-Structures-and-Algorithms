@@ -7,11 +7,13 @@ void bubblesort(int a[],int n){
         int ptr=0;
         while(ptr<n-i-1){
             if(a[ptr]>a[ptr+1]){
-                swap(a[ptr],a[ptr+1]);
+                swap(a[ptr],a[ptr+1]);      
                 flag=1;
             }
             ptr++;
         }
+        if(flag==0)
+            break;
     }
     if (flag==0)
         cout<<"Already sorted array";
@@ -21,7 +23,7 @@ void bubblesort(int a[],int n){
 }
 
 int main(){
-    int a[]={3,9,1,0,4,7,5};
+    int a[]={8,3,4,1};
     int n=sizeof(a)/sizeof(a[0]);
     bubblesort(a,n);
     return 0;
