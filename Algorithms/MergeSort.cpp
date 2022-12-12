@@ -1,49 +1,49 @@
 #include <iostream>
 using namespace std;
 
-void Merge(int array[], int const l, int const mid,int const r){
-    auto const subarr1 = mid - l + 1;
-    auto const subarr2 = r - mid;
+void Merge(int array[], int low, int mid,int high){
+    int l = mid - low + 1;
+    int r = high - mid;
 
-    auto *larr = new int[subarr1],*rarr = new int[subarr2];
+    int *larr = new int[l],*rarr = new int[r];
 
-    for (auto i = 0; i < subarr1; i++)
+    for (int i = 0; i < l; i++)
         larr[i] = array[l + i];
-    for (auto j = 0; j < subarr2; j++)
+    for (int j = 0; j < r; j++)
         rarr[j] = array[mid + 1 + j];
 
-    auto indexOfsubarr1 = 0,indexOfsubarr2= 0;  
-    int indexOfmergedarr = l;
+    int index_larr = 0,index_rarr= 0;  
+    int index_mergedarr = 0;
 
     // Merge the temp arrays back into array[l..r]
-    while (indexOfsubarr1 < subarr1 && indexOfsubarr2 < subarr2)
+    while (index_larr < l && index_rarr < r)
     {
-        if (larr[indexOfsubarr1] <= rarr[indexOfsubarr2])
+        if (larr[index_larr] <= rarr[index_rarr])
         {
-            array[indexOfmergedarr] = larr[indexOfsubarr1];
-            indexOfsubarr1++;
+            array[index_mergedarr] = larr[index_larr];
+            index_larr++;
         }
         else
         {
-            array[indexOfmergedarr] = rarr[indexOfsubarr2];
-            indexOfsubarr2++;
+            array[index_mergedarr] = rarr[index_rarr];
+            index_rarr++;
         }
-        indexOfmergedarr++;
+        index_mergedarr++;
     }
     // Copy the remaining elements of
     // l[], if there are any
-    while (indexOfsubarr1 < subarr1)
+    while (index_larr < l)
     {
-        array[indexOfmergedarr] = larr[indexOfsubarr1];
-        indexOfsubarr1++;
-        indexOfmergedarr++;
+        array[index_mergedarr] = larr[index_larr];
+        index_larr++;
+        index_mergedarr++;
     }
 
-    while (indexOfsubarr2 < subarr2)
+    while (index_rarr < r)
     {
-        array[indexOfmergedarr] = rarr[indexOfsubarr2];
-        indexOfsubarr2++;
-        indexOfmergedarr++;
+        array[index_mergedarr] = rarr[index_rarr];
+        index_rarr++;
+        index_mergedarr++;
     }
     delete[] larr;
     delete[] rarr;
@@ -57,7 +57,7 @@ void MergeSort(int array[], int const begin, int const end)
     if (begin >= end)
         return; // Returns recursively
 
-    auto mid = begin + (end - begin) / 2;
+    int mid = begin + (end - begin) / 2;
     MergeSort(array, begin, mid);
     MergeSort(array, mid + 1, end);
     Merge(array, begin, mid, end);

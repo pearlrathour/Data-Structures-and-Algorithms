@@ -17,6 +17,12 @@ int Partition(int A[],int low,int high){
         }
     }
     swap(A[low],A[j]);
+
+    cout<<"PIVOT SET-"<<endl;
+    for(int k=low;k<=high;k++){
+        cout<<A[k]<<" ";
+    }
+    cout<<endl;
     return j;
 }
 
@@ -29,7 +35,7 @@ void QuickSort(int A[],int low,int high){
 }
 
 int main(){
-	int arr[] = {1000, 11, 445,1, 330, 3000,4};
+	int arr[] = {7,3,9,14,8};
 	int size =sizeof(arr) / sizeof(arr[0]);
     for(int i=0;i<size;i++){
         cout<<arr[i]<<" ";
