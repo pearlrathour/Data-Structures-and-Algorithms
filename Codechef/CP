@@ -1,0 +1,131 @@
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
+using namespace std;
+
+#define fileio freopen("in.txt","r",stdin),freopen("out.txt","w",stdout);
+
+#define debug(n1) cout<<n1<<"\n"
+
+#define int long long int 
+#define double long double
+#define endl "\n"
+
+#define loop(o,n) for(int i=o;i<n;i++)
+#define rloop(o,n) for(int i=o;i>=n;i--)
+
+#define maX(a,b) (a > b ? a : b)
+#define maxOfThree(a,b,c) ( a > b ? (a > c ? a : c) : (b > c ? b : c) )
+
+#define sd(x) scanf("%lld",&x);
+#define sf(ip) scanf("%d",&ip);
+/*
+#define pb push_back
+#define eb emplace_back
+#define mp make_pair
+#define se second
+#define fi first
+#define le length
+
+//constants 
+const int md=1e9+7;
+const int MOD=998244353;
+const int _N=3e5+5;
+const int _MAX=3e5+5;
+const int _M=1e6+5;
+const int INF=1e18;
+
+//string palindrome function
+bool palin(string s){ 
+    int i=0; int j=s.le()-1; 
+    while(i<=j){ 
+        if(s[i]!=s[j]) return false;
+        i++; j--;
+    } 
+    return true; 
+}
+
+//string to integer conversion function
+int str_to_int(string s){ 
+    int num=0; int po=1; 
+    rloop(s.le()-1,0){ 
+        num+=po*(s[i]-'0');
+        po*=10; 
+     } 
+    return num;
+}
+
+//decimal to binary(string) conversion function
+string dec_to_bin(int n){ 
+    string res=""; 
+    while(n){ 
+        res+=(char)( '0' + n % 2 );
+         n>>=2; 
+    } 
+    reverse(res.begin(),res.end()); 
+    return res; 
+}
+
+//reverse a number 
+int rev_a_num(int num){ 
+    int ans=0; 
+    while(num){ 
+        int rem=num%10; 
+        ans*=10+rem; 
+        num/=10; 
+    } 
+    return ans; 
+}
+
+// modular power function
+int mod_pow(int a , int b ,int MOD){  
+    int res=1; 
+    while(b){ 
+        if(b&1) res=(res*a)%MOD; 
+        a=(a*a)%MOD;
+        b>>=1; 
+    } 
+    return res;
+} 
+
+//calculate power in O(nlogn) complexity
+int _pow(int a,int b){ 
+    int res=1; 
+    while(b){ 
+        if(b&1) res=res*a; 
+        a=a*a; 
+        b>>=1; 
+    } 
+    return res; 
+}
+
+//finding gcd of two integers
+int _gcd(int a,int b){ 
+    if(b>a){ 
+        int temp=a; 
+        a=b; 
+        b=temp; 
+    } 
+    if(b==0)  return a; 
+    return _gcd(b,a%b); 
+}
+
+
+// Binary search function 
+int binary_search(int dp[] , int n , int key) { 
+    int start = 1; 
+    int end = n; 
+    while(start <= end) { 
+        int mid = (start + end) / 2; 
+        if(dp[mid] == key) 
+            return mid; 
+        else if (dp[mid] > key) 
+            end = mid - 1; 
+        else 
+            start = mid + 1; 
+    } 
+    // if key not found returns -1
+    return -1; 
+} 
+*/

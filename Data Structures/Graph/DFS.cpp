@@ -10,12 +10,14 @@ void dfs(int node,vector<int> adj[], bool vis[], vector<int> &ls){
     }
 }
 
-vector<int> DFS(int V, vector<int> adj[]){
+void DFS(int V, vector<int> adj[]){
     bool vis[V] = {0};
     int start=0;
     vector<int>ls;
     dfs(start,adj,vis,ls);
-    return ls;
+    
+    for(auto i : ls)
+        cout<<i<<" ";
 }
 
 int main()
