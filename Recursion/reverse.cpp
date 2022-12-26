@@ -1,24 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void insert(stack<int>&A,int temp){
-    if(A.size()==0 || A.top() >= temp){
-        A.push(temp);
-        return;
-    }
-    int val=A.top();
-    A.pop();
-    insert(A,temp);
-    A.push(val);
-}
-
-void sort(stack<int>&A){
-    if(A.size()==1)
+void del(stack<int>&A,int n){
+    if(A.size()==0)
         return;
     int temp=A.top();
     A.pop();
-    sort(A);
-    insert(A,temp);
+    del(A,n);
+    A.push(temp);
 }
 
 int main(){
@@ -29,7 +18,8 @@ int main(){
         cin>>a;
         A.push(a);
     }
-    sort(A);
+    del(A,(n/2)+1);
+    n=A.size();
     for(int i=0;i<n;i++){
         cout<<A.top()<<" ";
         A.pop();
