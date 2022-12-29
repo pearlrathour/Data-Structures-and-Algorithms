@@ -1,1 +1,0 @@
-    subset(ip,op2);
