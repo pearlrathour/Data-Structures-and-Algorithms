@@ -1,25 +1,46 @@
+#pragma GCC optimize(" unroll-loops")
+#pragma gcc optimize("Ofast")
+#pragma GCC optimization("Ofast")
+#pragma optimize(Ofast)
 #include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
+using namespace std; 
+typedef unsigned long long ll;
+typedef long double lld;
+typedef pair<int,int> pi;
+#define jk          ios_base::sync_with_stdio(false),cin.tie(nullptr),cout.tie(nullptr);srand(time(NULL))
+#define ll        long long 
+#define mod       (ll) 998244353
+#define pb        push_back
+#define f(i,s,n)    for (int i=s;i<n;i++)
+#define fb(i,s,n,b)    for (int i=s;i<n;i+=b)
+#define frev(i,s,n) for(int i=s;i>n;i--)
+#define vii       vector<int
+#define vll       vector<ll>
+#define seti      set<int>
+#define setll     set<ll>
+#define pairi     pair<int,int>
+#define mapi      unordered_map<int,int>
+#define mapv      map<int,vii>
+#define vll       vector<ll>
+#define vpp       vector<pp>
+#define vss       vector<string>
+#define lcm(a,b)  (a*b)/__gcd(a,b)
+#define all(a)     a.begin(),a.end()
+#define all(a)     a.begin(),a.end()
+#define fo(i,a)    for(auto &i:a)
+#define bs(v,x)    binary_search(all(v),x)
+#define sortrev(a) sort(a.begin(), a.end(), greater<pair<pair<int,int>,int>>());
+#define vii2d      vector<vector<int>>
+#define ms         multiset<int>
+#define pairi      pair<int,int>
+#define useti      unordered_set<int>
+#define mp         make_pair
+#define gcd(a,b)   __gcd(a,b)
+#define fori(i,arr)for (auto &i:arr)
+#define input(arr) for(auto &i:arr) cin>>i;
+#define ff first 
+#define se second
 
-using namespace std;
-
-#define fileio freopen("in.txt","r",stdin),freopen("out.txt","w",stdout);
-
-#define debug(n1) cout<<n1<<"\n"
-
-#define int long long int 
-#define double long double
-#define endl "\n"
-
-#define loop(o,n) for(int i=o;i<n;i++)
-#define rloop(o,n) for(int i=o;i>=n;i--)
-
-#define maX(a,b) (a > b ? a : b)
-#define maxOfThree(a,b,c) ( a > b ? (a > c ? a : c) : (b > c ? b : c) )
-
-#define sd(x) scanf("%lld",&x);
-#define sf(ip) scanf("%d",&ip);
 /*
 #define pb push_back
 #define eb emplace_back

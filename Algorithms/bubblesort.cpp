@@ -23,7 +23,7 @@ void bubblesort(int a[],int n){
 }
 
 int main(){
-    int a[]={8,3,4,1};
+    int a[]={3,2,1,4};
     int n=sizeof(a)/sizeof(a[0]);
     bubblesort(a,n);
     return 0;

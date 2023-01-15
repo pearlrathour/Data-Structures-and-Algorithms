@@ -1,38 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int lcs(string A, string B, int m, int n)
-{
-    int L[m + 1][n + 1];
-    int i, j;
-    for (i = 0; i <= m; i++) {
-        for (j = 0; j <= n; j++) {
-            if (i == 0 || j == 0)
-                L[i][j] = 0;
-  
-            else if (A[i - 1] == B[j - 1])
-                L[i][j] = L[i - 1][j - 1] + 1;
-  
-            else
-                L[i][j] = max(L[i - 1][j], L[i][j - 1]);
-        }
+void solve(vector<int>&V,int n){
+    vector<int>a,b;
+	int N=n/2;
+    int res=0;
+    
+    for(int i=0;i<N;i++){
+        if(V[i]>N)
+            a.push_back(V[i]);
     }
-    return L[m][n];
+    for(int i=N;i<2*N;i++){
+        if(V[i]<=N)
+            a.push_back(V[i]);
+    }
+    
+    int l=a.size();
+    for(int i=0; i<l; i++){
+        res+=a[i]-b[i];
+    }
+    cout<<res<<endl;
 }
 
 int main() {
 	// your code goes here
-	int T;
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	int T,N,n;
 	cin>>T;
 	while(T--){
-	    int N;
 	    cin>>N;
-	    string S;
-	    cin>>S;
-	    string A=S;
-	    string B=S;
-	    reverse(B.begin(), B.end());
-	    cout<<lcs(A,B,N,N)/2<<endl;
+	    int n=2*N;
+	    vector<int>V(n);
+	    for(int i=0;i<n;i++)
+	        cin>>V[i];
+	    solve(V,n);
 	}
 	return 0;
 }
