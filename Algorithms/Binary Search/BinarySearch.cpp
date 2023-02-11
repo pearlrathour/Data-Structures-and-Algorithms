@@ -19,7 +19,6 @@ int bin(int a[],int n,int val){
     return -1;
 }
 
-
 int rec_bin(int a[],int lb,int ub,int val){
     if(lb<=ub){
         int mid=(lb+ub)/2;

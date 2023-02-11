@@ -151,10 +151,8 @@ int binary_search(int dp[] , int n , int key) {
 } 
 */
 
-#pragma GCC optimize(" unroll-loops")
-#pragma gcc optimize("Ofast")
-#pragma GCC optimization("Ofast")
-#pragma optimize(Ofast)
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
 #include <bits/stdc++.h>
 using namespace std; 
 
