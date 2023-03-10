@@ -3,6 +3,7 @@
         "cp": "cpp",
         "*.tcc": "cpp",
         "iostream": "cpp",
-        "template": "cpp"
+        "template": "cpp",
+        "ostream": "cpp"
     }
 }
