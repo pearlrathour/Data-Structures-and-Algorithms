@@ -1,5 +1,5 @@
 // binary search tree
-#include <iostream>
+#include <bits/stdc++.h>
 #include <queue>
 using namespace std;
 
@@ -18,12 +18,13 @@ struct Node
 void Display(Node *root)
 {
 	if (root != NULL){
-		Display(root->left);
 		cout << root->key << "  ";
+		Display(root->left);
 		Display(root->right);
 	}
 }
 
+//Breadth First Traversal
 void LevelOrderTraversal(Node *root){
 	queue<Node *>q;
 	q.push(root);
@@ -37,32 +38,25 @@ void LevelOrderTraversal(Node *root){
 			if(!q.empty()){
 				q.push(NULL);
 			}
-
-			else{
-				cout<<temp->key<<" ";
-				if(temp->left)
-					q.push(temp->left);
-				if(temp->right)
-					q.push(temp->right);
-			}
+		}
+		else{
+			cout<<temp->key<<" ";
+			if(temp->left)
+				q.push(temp->left);
+			if(temp->right)
+				q.push(temp->right);
 		}
 	}
 }
 
-int maxDepth(Node* root){
-	int depth;
+int height(Node* root,int &diameter){
     if (root == NULL)
         return 0;
-    else{
-        int lDepth = maxDepth(root->left);
-        int rDepth = maxDepth(root->right);
-
-        if (lDepth > rDepth)
-            depth=lDepth + 1;
-        else
-            depth=rDepth + 1;
-    }
-	return depth;
+        
+	int lh = height(root->left,diameter);
+    int rh = height(root->right,diameter);
+	diameter=max(diameter,lh+rh);
+	return max(lh,rh) + 1;
 }
 
 int lheight(Node* root){
@@ -113,42 +107,155 @@ Node *Insert(Node *root){
 	return root;
 }
 
+//Recursive
+// void Inorder(Node *root){
+// 	if(root==NULL)
+// 		return;
+	
+// 	Inorder(root->left);
+// 	cout<<root->key<<" ";
+// 	Inorder(root->right);
+// }
+
+
+//Iterative
 void Inorder(Node *root){
-	if(root==NULL)
-		return;
-	
-	Inorder(root->left);
-	cout<<root->key<<" ";
-	Inorder(root->right);
+	vector<int>Inorder;
+	stack<Node*>s;
+	Node *temp=root;
+
+	while(1){
+		if(temp){
+			s.push(temp);
+			temp=temp->left;
+		}
+		else{
+			if(s.empty())
+				break;
+			temp=s.top();
+			s.pop();
+			Inorder.push_back(temp->key);
+			temp=temp->right;
+		}
+	}
+	for(auto i : Inorder){
+		cout<<i<<" ";
+	}
 }
 
-void Preorder(Node * root){
-	if(root==NULL)
-		return;
+//Recursive
+// void Preorder(Node * root){
+// 	if(root==NULL)
+// 		return;
 	
-	cout<<root->key<<" ";
-	Preorder(root->left);
-	Preorder(root->right);
+// 	cout<<root->key<<" ";
+// 	Preorder(root->left);
+// 	Preorder(root->right);
+// }
+
+//Iterative
+void Preorder(Node *root){
+	vector<int>preorder;
+	if(root == NULL)
+		return ;
+	
+	stack<Node*>s;
+	s.push(root);
+	while(!s.empty()){
+		root = s.top();
+		s.pop();
+		preorder.push_back(root->key);
+		if(root->right){
+			s.push(root->right);
+		}
+		if(root->left){
+			s.push(root->left);
+		}
+	}
+	for(auto i : preorder){
+		cout<<i<<" ";
+	}
 }
 
+// void Postorder(Node *root){
+// 	if(root==NULL)
+// 		return;
+	
+// 	Postorder(root->left);
+// 	Postorder(root->right);
+// 	cout<<root->key<<" ";
+// }
+
+
+//Iterative
+// 2 stack
+// void Postorder(Node *root){
+// 	if(!root)
+// 		return ;
+
+// 	stack<Node*>s1,s2;
+// 	s1.push(root);
+
+// 	while(!s1.empty()){
+// 		root=s1.top();
+// 		s1.pop();
+// 		s2.push(root);
+
+// 		if(root->left)
+// 			s1.push(root->left);
+
+// 		if(root->right)
+// 			s1.push(root->right);
+// 	}
+// 	while(!s2.empty()){
+// 		cout<<s2.top()->key<<" ";
+// 		s2.pop();
+// 	}
+// }
+
+
+// 1 stack
 void Postorder(Node *root){
-	if(root==NULL)
-		return;
-	
-	Postorder(root->left);
-	Postorder(root->right);
-	cout<<root->key<<" ";
-}
+	if(!root)
+		return ;
 
+	stack<Node*>s;
+	vector<int>postorder;
+	Node *curr=root,*temp=NULL;
+
+	while(curr || !s.empty()){
+		if(curr){
+			s.push(curr);
+			curr=curr->left;
+		}
+		else{
+			curr=s.top();
+			if(!curr->right || curr->right==temp){
+				postorder.push_back(curr->key);
+				s.pop();
+				temp=curr;
+				curr=NULL;
+			}
+			else{
+				curr=curr->right;
+			}
+		}
+	}
+	for(auto i : postorder){
+		cout<<i<<" ";
+	}
+	
+}
 
 int main()
 {
 	Node *root = NULL;
-	int usrchoice = 0;
+	int usrchoice = 0, diameter=0;
+	vector<vector<int>>V;
 
 	while (1)
 	{
-		cout << "\n\n1.Display\n2.Level Order Traversal\n3.Total Nodes\n4.Depth\n5.Insert\n6.Inorder\n7.Preorder\n8.Postorder\n9.Exit" << endl;
+		cout << "\n\n1.Display\n2.Insert\n3.Inorder\n4.Preorder\n5.Postorder\n6.Level Order Traversal\n7.Height\n8.Diameter\n9.Total Nodes\n10.Exit\n" << endl;
 		cout << "Enter the choice of operation to be implemented : ";
 		cin >> usrchoice;
 
@@ -159,35 +266,41 @@ int main()
 			break;
 
 		case 2:
-			LevelOrderTraversal(root);
-			break;
-
-		case 3:
-			cout<<TotalNodes(root);
-			break;
-
-		case 4:
-			cout<<maxDepth(root);
-			break;
-
-		case 5:
 			root = Insert(root);
 			Display(root);
 			break;
-
-		case 6:
+			
+		case 3:
 			Inorder(root); //L Ro Ri
 			break;
 
-		case 7:
+		case 4:
 			Preorder(root); //Ro L Ri
 			break;
 
-		case 8:
+		case 5:
 			Postorder(root);  // L Ri Ro
 			break;
 
+		case 6:
+			LevelOrderTraversal(root);
+			break;
+
+		case 7:
+			cout<<height(root,diameter);
+			break;
+
+		case 8:
+			diameter=0;
+			height(root,diameter);
+			cout<<diameter<<endl;
+			break;
+		
 		case 9:
+			cout<<TotalNodes(root);
+			break;
+
+		case 10: 
 			exit(1);
 
 		default:

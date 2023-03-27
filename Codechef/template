@@ -156,4 +156,18 @@ int binary_search(int dp[] , int n , int key) {
 #include <bits/stdc++.h>
 using namespace std; 
 
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
+//tree
+vector<vector<int>> arr(n);
+    int u,v;
+    int m=n-1;
+    for(int i=0;i<m;i++)
+    {
+        cin>>u>>v;
+        arr[u].push_back(v);
+        arr[v].push_back(u);
+    }
+    1--> 3,4,5
+    3-->4,5
+    6--> 4,5,6
