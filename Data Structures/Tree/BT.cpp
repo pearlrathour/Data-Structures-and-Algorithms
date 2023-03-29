@@ -25,15 +25,41 @@ void Display(Node * root){
 }
 
 void LevelOrderTraversal(Node * root){
+	queue<Node *>q;
+	q.push(root);
+	q.push(NULL);
 
+	while(!q.empty()){
+		Node *temp=q.front();
+		q.pop();
+		if(temp==NULL){
+			cout<<endl;
+			if(!q.empty()){
+				q.push(NULL);
+			}
+		}
+		else{
+			cout<<temp->val<<" ";
+			if(temp->left)
+				q.push(temp->left);
+			if(temp->right)
+				q.push(temp->right);
+		}
+	}
 }
 
 int TotalNodes(Node * root){
 
 }
 
-int maxDepth(Node * root){
-
+int height(Node * root){
+	if (root == NULL)
+        return 0;
+        
+	int lh = height(root->left);
+    int rh = height(root->right);
+	
+	return max(lh,rh) + 1;
 }
 
 Node* Insert(int arr[], int i, int n){
@@ -70,17 +96,104 @@ void insertFirstAvailable(Node* root, int value) {
     }
 }
 
-void Inorder(Node * root){
+//L Ro Ri
 
+// void Inorder(Node * root){
+// 	if(!root)
+// 		return;
+// 	Inorder(root->left);
+// 	cout<<root->val<<" ";
+// 	Inorder(root->right);
+// }
+
+void Inorder(Node* root){
+	vector<int>inorder;
+	stack<Node*>s;
+	Node* temp=root;
+
+	while(1){
+		if(temp){
+			s.push(temp);
+			temp=temp->left;
+		}
+		else{
+			if(s.empty())
+				break;
+			temp=s.top();
+			s.pop();
+			inorder.push_back(temp->val);
+			temp=temp->right;
+		}
+	}
+	for(auto i : inorder)
+		cout<<i<<" ";
 }
 
-void Preorder(Node * root){
+//Ro L Ri
 
+// void Preorder(Node * root){
+// 	if(!root)
+// 		return;
+// 	Preorder(root->left);
+// 	cout<<root->val<<" ";
+// 	Preorder(root->right);
+// }
+
+void Preorder(Node* root){
+	vector<int>preorder;
+
+	if(!root)
+		return;
+
+	stack<Node*>s;
+	s.push(root);
+
+	while(!s.empty()){
+		root=s.top();
+		s.pop();
+		preorder.push_back(root->val);
+		if(root->right)
+			s.push(root->right);
+		if(root->left)
+			s.push(root->left);
+	}
+	for(auto i : preorder)
+		cout<<i<<" ";
 }
 
-void Postorder(Node * root){
 
+//L Ri Ro
+// void Postorder(Node * root){
+// 	if(!root)
+// 		return;
+// 	Postorder(root->left);
+// 	cout<<root->val<<" ";
+// 	Postorder(root->right);
+// }
+
+void Postorder(Node* root){
+	if(!root)
+		return;
+
+	stack<Node*>s1,s2;
+	s1.push(root);
+
+	while(!s1.empty()){
+		root=s1.top();
+		s1.pop();
+		s2.push(root);
+		
+		if(root->left)
+			s1.push(root->left);
+		if(root->right)
+			s1.push(root->right);
+	}
+	while(!s2.empty()){
+		cout<<s2.top()->val<<" ";
+		s2.pop();
+	}
 }
+
 
 int main(){
 	int usrchoice = 0;
@@ -89,7 +202,7 @@ int main(){
 
 	while (1)
 	{
-		cout << "\n\n1.Display\n2.Level Order Traversal\n3.Total Nodes\n4.Depth\n5.Insert\n6.Inorder\n7.Preorder\n8.Postorder\n9.Insert First Available\n10.Exit" << endl;
+		cout << "\n\n1.Display\n2.Insert\n3.Inorder\n4.Preorder\n5.Postorder\n6.Level Order Traversal\n7.Total Nodes\n8.Depth\n9.Insert First Available\n10.Exit" << endl;
 		cout << "Enter the choice of operation to be implemented : ";
 		cin >> usrchoice;
 
@@ -99,18 +212,6 @@ int main(){
 			break;
 
 		case 2:
-			LevelOrderTraversal(root);
-			break;
-
-		case 3:
-			cout<<TotalNodes(root);
-			break;
-
-		case 4:
-			cout<<maxDepth(root);
-			break;
-
-		case 5:
 			
 			for(int i=0;i<n;i++){
 				cin>>arr[i];
@@ -119,16 +220,28 @@ int main(){
 			Display(root);
 			break;
 
-		case 6:
+		case 3:
 			Inorder(root); //L Ro Ri
 			break;
 
-		case 7:
+		case 4:
 			Preorder(root); //Ro L Ri
 			break;
 
-		case 8:
+		case 5:
 			Postorder(root);  // L Ri Ro
+			break;
+
+		case 6:
+			LevelOrderTraversal(root);
+			break;
+
+		case 7:
+			cout<<TotalNodes(root);
+			break;
+
+		case 8:
+			cout<<height(root);
 			break;
 
 		case 9: 
