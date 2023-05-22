@@ -4,6 +4,8 @@
         "*.tcc": "cpp",
         "iostream": "cpp",
         "template": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "bitset": "cpp",
+        "string_view": "cpp"
     }
 }

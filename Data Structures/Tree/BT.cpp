@@ -48,8 +48,33 @@ void LevelOrderTraversal(Node * root){
 	}
 }
 
-int TotalNodes(Node * root){
+int leftheight(Node* root){
+	int h=0;
+	while(root){
+		h++;
+		root=root->left;
+	}
+	return h;
+}
 
+int rightheight(Node* root){
+	int h=0;
+	while(root){
+		h++;
+		root=root->right;
+	}
+	return h;
+}
+
+int TotalNodes(Node * root){
+	if(!root)
+		return 0;
+	int lh=leftheight(root);
+	int rh=rightheight(root);
+
+	if(lh==rh)
+		return 1<<lh -1;
+	return 1+TotalNodes(root->left) + TotalNodes(root->right);
 }
 
 int height(Node * root){

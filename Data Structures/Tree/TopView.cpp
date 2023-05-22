@@ -51,7 +51,7 @@ vector<int> TopView(Node* root){
         if(node->left)
             q.push({node->left,line-1});
         if(node->right)
-            q.push({node->right,line-1});
+            q.push({node->right,line+1});
     }
     for(auto i : mp)
         res.push_back(i.second);
