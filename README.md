@@ -8,12 +8,12 @@ Here are some of the data structures included in this repository:
 ```sh
 The following **Data Structures and Algorithms** are covered in this repository:
  -Data Structure
-        -Array
-        -Stack
-        -Queue
-        -Linked List
-        -Tree
-        -Graph
+  -Array
+  -Stack
+  -Queue
+  -Linked List
+  -Tree
+  -Graph
  -Algorithms
  -2 pointers
  -Recursion
