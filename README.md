@@ -3,7 +3,7 @@
 This repository contains a collection of data structures and algorithms implemented in various programming languages(C, Cpp).  This repository aims to provide a comprehensive collection of well-known data structures and algorithms along with their implementations in different programming languages.
 
 ```sh
-The following **Data Structures and Algorithms** are covered in this repository:
+The following Data Structures and Algorithms are covered in this repository:
  -Data Structure
    -Array
    -Stack
