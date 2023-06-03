@@ -13,6 +13,20 @@ struct Node{
     }
 };
 
+Node *Insertend(Node *head,int val){
+    Node *temp=new Node(val);
+    if(head==NULL){
+       temp->next=head;
+       return temp; 
+    }
+    
+    Node *curr=head;
+    while(curr->next != NULL)
+        curr=curr->next;
+    curr->next=temp;
+    temp->next=NULL;
+    return head;
+}
 
 Node *rev1(Node *head,int k){
     Node *curr=head,*prevFirst=NULL;
@@ -45,22 +59,25 @@ Node *rev1(Node *head,int k){
 
 void print(Node *head){
     Node *curr=head;
+    cout<<endl<<endl<<endl<<endl<<endl<<endl;
     while(curr != NULL){
         cout<<curr->data<<"->";
         curr=curr->next;
     }
-    cout<<"NULL"<<endl;
+    cout<<"NULL"<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
 }
  
 int main(){
-    Node *head=new Node(10);
-    head->next = new Node(20);
-    head->next->next=new Node(30);
-    head->next->next->next=new Node(40);
-    head->next->next->next->next=new Node(50);
-    // head->next->next->next->next->next=new Node(60);
+    Node *head=NULL;
+    int n,val,k;
+    cin>>n;
+    for(int i=0; i<n; i++){
+        cin >> val;
+        head=Insertend(head,val);
+    }
+    cin>>k;
     print(head);
-    head=rev1(head,3);
+    head=rev1(head,k);
     print(head);
     return 0;
 }

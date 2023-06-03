@@ -3,9 +3,11 @@ using namespace std;
 
 void BFS(int V, vector<int> adj[]){
     bool vis[V]={0};
+    int in;
+    cin>>in;
+    vis[in]=1;
     queue<int>Q;
-    Q.push(0);
-    vis[0]=1;
+    Q.push(in);
     vector<int>BFS;
     while(!Q.empty()){
         int node=Q.front();
@@ -26,25 +28,25 @@ void BFS(int V, vector<int> adj[]){
 }
 
 int main(){
-    int V,E;
-    cin>> V;
-    cin>> E;
-    vector<int> adj[E];
-    for(int i=0;i<E;i++){
+    int n,m;
+    cin>> n>> m;
+    //array of size n+1 with elements vector
+    vector<int> adj[n +1];
+    for(int i=0;i<m;i++){
         int u,v;
-        cin>> u;
-        cin>> v;
+        cin>> u>> v;
         adj[u].push_back(v);
+        adj[v].push_back(u);
     }
 
-    cout<<"Adjacency list "<<endl;
-    for (int i = 0; i < V; i++) {
-		cout << i << "--> ";
-		for (int j = 0; j < adj[i].size(); j++)
-			cout << adj[i][j] << " ";
-		cout << "\n";
-	}
+    // cout<<"Adjacency list "<<endl;
+    // for (int i = 0; i < m; i++) {
+	// 	cout << i << "--> ";
+	// 	for (int j = 0; j < adj[i].size(); j++)
+	// 		cout << adj[i][j] << " ";
+	// 	cout << "\n";
+	// }
 
-    BFS(V,adj);
+    BFS(n,adj);
     return 0;
 }

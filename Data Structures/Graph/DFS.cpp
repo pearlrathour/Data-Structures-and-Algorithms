@@ -10,9 +10,10 @@ void dfs(int node,vector<int> adj[], bool vis[], vector<int> &ls){
     }
 }
 
-void DFS(int V, vector<int> adj[]){
-    bool vis[V] = {0};
-    int start=0;
+void DFSofGraph(int n, vector<int> adj[]){
+    bool vis[n] = {0};
+    int start;
+    cin>>start;
     vector<int>ls;
     dfs(start,adj,vis,ls);
     
@@ -22,20 +23,19 @@ void DFS(int V, vector<int> adj[]){
 
 int main()
 {
-    int V, E;
-    cin >> V;
-    cin >> E;
-    vector<int> adj[E];
-    for (int i = 0; i < E; i++)
-    {
-        int u, v;
-        cin >> u;
-        cin >> v;
+    int n,m;
+    cin>> n>> m;
+    //array of size n+1 with elements vector
+    vector<int> adj[n +1];
+    for(int i=0;i<m;i++){
+        int u,v;
+        cin>> u>> v;
         adj[u].push_back(v);
+        adj[v].push_back(u);
     }
 
     cout << "Adjacency list " << endl;
-    for (int i = 0; i < V; i++)
+    for (int i = 0; i < m; i++)
     {
         cout << i << "--> ";
         for (int j = 0; j < adj[i].size(); j++)
@@ -43,6 +43,6 @@ int main()
         cout << "\n";
     }
 
-    DFS(V, adj);
+    DFSofGraph(n, adj);
     return 0;
 }
