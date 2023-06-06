@@ -3,7 +3,6 @@ using namespace std;
 
 struct Node{
     int data;
-    //self referential structure(address of next node)
     Node *next;
 
     //constructor to initialise value
@@ -13,7 +12,7 @@ struct Node{
     }
 };
 
-Node *Insertend(Node *head,int val){
+Node *Insert(Node *head,int val){
     Node *temp=new Node(val);
     if(head==NULL){
        temp->next=head;
@@ -28,7 +27,7 @@ Node *Insertend(Node *head,int val){
     return head;
 }
 
-Node *rev1(Node *head,int k){
+Node *rev(Node *head,int k){
     Node *curr=head,*prevFirst=NULL;
     bool isFirstPass=true;
 
@@ -36,12 +35,12 @@ Node *rev1(Node *head,int k){
         Node *first=curr,*prev=NULL;
         int count=0;
 
-        while(curr!=NULL&&count<k){
-        Node *next=curr->next;
-        curr->next=prev;
-        prev=curr;
-        curr=next;
-        count++;
+        while(curr!=NULL && count<k){
+            Node *next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+            count++;
         }
 
         if(isFirstPass){
@@ -59,25 +58,26 @@ Node *rev1(Node *head,int k){
 
 void print(Node *head){
     Node *curr=head;
-    cout<<endl<<endl<<endl<<endl<<endl<<endl;
+    cout<<endl<<endl;
     while(curr != NULL){
         cout<<curr->data<<"->";
         curr=curr->next;
     }
-    cout<<"NULL"<<endl<<endl<<endl<<endl<<endl<<endl<<endl;
+    cout<<"NULL"<<endl<<endl;
 }
  
 int main(){
     Node *head=NULL;
     int n,val,k;
-    cin>>n;
+    cout<<"Enter n, k : ";
+    cin>>n>>k;
+    cout<<"Enter nodes : \n";
     for(int i=0; i<n; i++){
         cin >> val;
-        head=Insertend(head,val);
+        head=Insert(head,val);
     }
-    cin>>k;
     print(head);
-    head=rev1(head,k);
+    head=rev(head,k);
     print(head);
     return 0;
 }

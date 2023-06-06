@@ -21,7 +21,7 @@ int orangesRotting2(vector<vector<int>> &grid)
                 dfs(grid, i, j);
         }
     }
-    int min = 2;
+    int min = 0;
     for (auto &i : grid)
     {
         for (auto &j : i)
@@ -32,7 +32,7 @@ int orangesRotting2(vector<vector<int>> &grid)
         }
         cout << endl;
     }
-    return min - 2;
+    return min;
 }
 
 int orangesRotting1(vector<vector<int>> &grid)
