@@ -39,6 +39,14 @@ void bubblesort(int arr[],int n){
     }
 } 
 
+void reverse_arr(int a[],int n)
+ {
+    for(int i=0;i<n/2;i++)
+    {
+        swap(a[i],a[n-i-1]);
+    }
+ }
+
 void merge(){
 
 }
@@ -58,7 +66,7 @@ int main()
     int val, k;
 
     while (1){
-        cout << "\n\n1.Search 2.Insert 3.Delete 4.Sort 5.Merge 6.Display 7.Exit\n"<< endl;
+        cout << "\n\n1.Search 2.Insert 3.Delete 4.Sort 5.Merge 6.Reverse array 7.Display 8.Exit\n"<< endl;
 
         cout << "Enter the choice of operation to be implemented"<< endl;
         cin >> usrchoice;
@@ -96,12 +104,18 @@ int main()
             merge();
             break;
 
-        case 6:
-            cout<<"Array : "<<endl;
+         case 6:
+            cout<<" Reversed Array : "<<endl;
+            reverse_arr(a, n);
             display(a,n);
             break;
 
         case 7:
+            cout<<"Array : "<<endl;
+            display(a,n);
+            break;
+
+        case 8:
              exit(1);
 
         default:
