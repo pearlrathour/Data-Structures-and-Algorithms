@@ -64,7 +64,7 @@ int main(){
     head1->next->next=new Node(50);
     head1->next->next->next=new Node(70);
     head1->next->next->next->next=new Node(100);
-    cout<<"1st Linked List : \n";
+    cout<<"1st Linked List : \n"<<head1<<" ";
     print(head1);
 
     Node *head2=new Node(0);
