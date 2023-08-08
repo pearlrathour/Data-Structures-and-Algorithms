@@ -1,30 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-double Power(int x, int n)
+double solve(double x, int n)
 {
     if (n == 0)
         return 1;
-
-    if (n < 0) { 
-            n = abs(n);
-            x = 1/x;
-        }
-        if(n%2==0){
-            return Power(x*x,n/2);
-        
-        }else{
-            return x*Power(x*x,n/2);
-        }
+    double temp = myPow(x, n / 2);
+    temp = temp * temp;
+    if ((n & 1) == 0)
+        return temp;
+    else
+        return x * temp;
+}
+double myPow(double x, int n)
+{
+    double ans = solve(x, abs(n));
+    if (n < 0)
+        return 1 / ans;
+    return ans;
 }
 
 int main()
 {
-    int n, x;
+    double n, x;
     cout << "Enter number : ";
     cin >> x;
     cout << "Enter power : ";
     cin >> n;
-    cout << Power(x, n) << endl;
+    cout << myPow(x, n) << endl;
     return 0;
 }
