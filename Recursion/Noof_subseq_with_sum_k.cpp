@@ -2,8 +2,6 @@
 using namespace std;
 
 int subseq(int ind, int n, int s, int k, vector<int> &nums){
-    if(s>0)
-        return 0;
     if (ind >= n){
         if(s==k)
             return 1;
