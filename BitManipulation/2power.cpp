@@ -1,10 +1,29 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool isPowerOfTwo(int n)
-{
+bool isPowerOfTwo(int n){
     return (ceil(log2(n)) == floor(log2(n)));
     //ceil(2.3)=3  floor(2.3)=2
+}
+
+bool isPowerOfTwo2(int n) {
+    if(n<=0)
+        return 0;
+    int count=0;
+    while(n){
+        if(n&1)
+            count++;
+        if(count>1)
+            return 0;
+        n/=2;
+    }
+    return 1;
+}
+
+bool isPowerOfTwo3(int n) {
+    if(n<=0)
+        return 0;
+    return (n&(n-1))==0;
 }
 
 int main(){
