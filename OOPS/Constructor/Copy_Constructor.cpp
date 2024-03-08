@@ -11,6 +11,7 @@ public:
         rno=r;
     }
 
+    //inbuilt shallow
     student(student const &t){
         cout<<"Copy constructor called"<<endl;
         rno = t.rno;
