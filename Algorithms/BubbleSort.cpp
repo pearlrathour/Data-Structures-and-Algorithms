@@ -4,13 +4,11 @@ using namespace std;
 void bubblesort(int a[],int n){
     bool flag=0;
     for(int i=0 ; i<n ; i++){
-        int ptr=0;
-        while(ptr<n-i-1){
-            if(a[ptr]>a[ptr+1]){
-                swap(a[ptr],a[ptr+1]);      
+        for(int j=0; j<n-i-1; j++){
+            if(a[j]>a[j+1]){
+                swap(a[j],a[j+1]);      
                 flag=1;
             }
-            ptr++;
         }
         if(flag==0)
             break;

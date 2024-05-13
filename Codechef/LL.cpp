@@ -22,6 +22,7 @@ void MS(int l, int r, vector<int>& arr){
     MS(l,mid,arr);
     MS(mid+1,r,arr);
     Merge(l,mid,r,arr);
+    print(arr);
 }
 
 int main(){

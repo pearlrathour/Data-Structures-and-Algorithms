@@ -1,50 +1,33 @@
-#include<iostream>
+#include <bits/stdc++.h>
+#define print(a)for (auto x : a)cout << x << ' ';cout<<endl;
 using namespace std;
 
-int Partition(int A[],int low,int high){
-    int pivot=A[low];
-    int i=low;
-    int j=high;   //pivotindex
+int findpivot(int l, int r, vector<int>& arr){
+    int pivot= arr[l];
+    int i=l , j=r;
     while(i<j){
-        while(pivot>=A[i]){
-            i++;
-        }
-        while(pivot<A[j]){
-            j--;
-        }
-        if(i<j){
-            swap(A[i],A[j]);
-        }
+        while(arr[i]<=pivot && i<=r-1) i++;
+        while(arr[j]>pivot && j>=l+1) j--;
+        if(i<j) swap(arr[i], arr[j]);
     }
-    swap(A[low],A[j]);
-
-    cout<<"PIVOT SET-"<<endl;
-    for(int k=low;k<=high;k++){
-        cout<<A[k]<<" ";
-    }
-    cout<<endl;
+    swap(arr[l], arr[j]);
     return j;
 }
 
-void QuickSort(int A[],int low,int high){
-    if(low >= high)
-        return;
-    int q=Partition(A,low,high);
-    QuickSort(A,low,q-1);   //left
-    QuickSort(A,q+1,high);    //right
+void QS(int l, int r, vector<int>& arr){
+    if(l<r){
+        int idx= findpivot(l,r,arr);
+        QS(l,idx-1,arr);
+        QS(idx+1,r,arr);
+    }
 }
 
 int main(){
-	int arr[] = {7,3,9,14,8};
-	int size =sizeof(arr) / sizeof(arr[0]);
-    for(int i=0;i<size;i++){
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;
-	QuickSort(arr,0,size-1);
-    for(int i=0;i<size;i++){
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;
-	return 0;
+    int n;
+    cin>>n;
+    vector<int>arr(n);
+    for(int i=0; i<n; i++) cin>>arr[i];
+    QS(0,n-1,arr);
+    print(arr);
+    return 0;
 }

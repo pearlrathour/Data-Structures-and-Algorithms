@@ -1,33 +1,28 @@
-#include<iostream>
-using namespace std;
+#include<bits/stdc++.h>
+using namespace std; 
 
-void swap(int*x,int*y){
-    int temp;
-    temp=*x;
-    *x=*y;
-    *y=temp;
-} 
-
-int selection(int a[],int n){
-    while(--n>0){
-        int max=n;
-        for(int i=0 ; i<n ; i++){
-            if(a[i]>a[max])
-                max=i;
+int selection(vector<int>& a, int n){
+    for(int i=0; i<n-1; i++){
+        int mn=i;
+        for(int j=i+1 ; j<n ; j++){
+            if(a[j]<a[mn])
+                mn=j;
         }
-        if(max != n)
-            swap(&a[n],&a[max]);
+        if(mn != i)
+            swap(a[i],a[mn]);
     }
     return 0;
 }
 
 int main(){
-    int a[]={9,4,0,1,2,8};
-    int n = sizeof(a) / sizeof(a[0]);
-    cout<<selection(a,n)<<endl;
+    int n;
+    cin>>n;
+    vector<int>a(n);
+    for(int i=0; i<n; i++) cin>>a[i];
+    selection(a,n);
     cout<<"Sorted array : "<<endl;
     for(int i=0;i<n;i++){
-        cout<<a[i];
+        cout<<a[i]<<" ";
     }
     return 0;
 }
