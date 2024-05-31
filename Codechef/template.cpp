@@ -9,12 +9,15 @@
 using namespace std;
 #define MOD 1000000007
 
+int solve(){
+
+}
+
 int main() {
 	// your code goes here
 	pearl
-	ll t,n;
+	ll t;
 	cin>>t;
-	while(t--){
-    }
+	while(t--) cout<<solve()<<endl;
 	return 0;
 }
