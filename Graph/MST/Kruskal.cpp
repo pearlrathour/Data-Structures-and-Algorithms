@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Time Complexity: O(N+E) + O(E logE) + O(E*4α*2)
+// Space Complexity: O(N) + O(N) + O(E)
 class DisjointSet{
     vector<int>par,size;
 public:
@@ -10,6 +12,7 @@ public:
         for(int i=0; i<=n; i++) par[i]=i;
     }
 
+    // path compression
     int findpar(int node){
         if(node==par[node]) return node;
         return par[node]=findpar(par[node]);
@@ -41,6 +44,7 @@ int main(){
     }
     
     DisjointSet ds(V);
+    // so that while iterating we can get edges with min wt first
     sort(edges.begin(), edges.end());
     int mstWt = 0;
     for (auto it : edges) {

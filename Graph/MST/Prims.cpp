@@ -3,6 +3,8 @@ using namespace std;
 
 class Solution{
 public:
+
+    //O(ElogE)
     int spanningTree(int V, vector<vector<int>> adj[]){
         int sum=0;
         vector<bool>vis(V);

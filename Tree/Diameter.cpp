@@ -31,6 +31,7 @@ Node *Insert(Node *root){
 	return root;
 }
 
+//O(n)
 int height(Node* root,int &diameter){
     if (root == NULL)
         return 0;

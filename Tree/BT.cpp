@@ -159,8 +159,8 @@ void Inorder(Node* root){
 // void Preorder(Node * root){
 // 	if(!root)
 // 		return;
-// 	Preorder(root->left);
 // 	cout<<root->val<<" ";
+// 	Preorder(root->left);
 // 	Preorder(root->right);
 // }
 
@@ -192,8 +192,8 @@ void Preorder(Node* root){
 // 	if(!root)
 // 		return;
 // 	Postorder(root->left);
-// 	cout<<root->val<<" ";
 // 	Postorder(root->right);
+// 	cout<<root->val<<" ";
 // }
 
 void Postorder(Node* root){

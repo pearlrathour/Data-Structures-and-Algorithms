@@ -37,7 +37,7 @@ void print(Node *head){
     cout<<"NULL"<<endl<<endl;
 }
 
-
+//Tortoise Hare Algo
 bool hasCycle(Node *head) {
         if(!head)
             return 0;

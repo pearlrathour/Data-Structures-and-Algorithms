@@ -3,6 +3,8 @@ using namespace std;
 
 class Solution{
 public:
+
+    // O(ElogV)
     vector<int> dijkstra(int v, vector<vector<int>> adj[], int s){
         vector<int> dist(v, INT_MAX);
         dist[s] = 0;
