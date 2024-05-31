@@ -4,19 +4,22 @@ This repository contains a collection of data structures and algorithms implemen
 
 ```sh
 The following Data Structures and Algorithms are covered in this repository:
- -Data Structure
-   -Array
-   -Stack
-   -Queue
-   -Linked List
-   -Tree
-   -Graph
  -Algorithms
- -2 pointers
+ -Array
+ -Stack
+ -Queue
+ -Priority Queue
+ -Linked List
+ -Tree
+ -Graph
+ -Heap
  -Recursion
+ -Dynamic Programming
+ -2 pointers
  -Sliding Window
  -Bit Manipulation
- 
+ -Operating Systems
+ -OOPS
  ```
 
 Feel free to explore the individual directories to learn more about each data structure and its implementation.
