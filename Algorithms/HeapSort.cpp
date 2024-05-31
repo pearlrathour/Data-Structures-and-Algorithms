@@ -1,55 +1,43 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 //O(nlogn)
-void Heapify(int A[],int n,int i){
-    int largest = i; //root
-    int l= 2*i + 1; // left child
-    int r= 2*i + 2; // right child
- 
-    if (l < n && A[l] > A[largest])
+void Heapify(int i, int n, vector<int>& arr){
+    int l=2*i+1, r= 2*i+2;
+    int largest=i;
+    if(l<n && arr[l]>arr[largest])
         largest=l;
- 
-    if (r < n && A[r] > A[largest])
+    if(r<n && arr[r]>arr[largest])
         largest=r;
- 
-    if (largest != i){
-        swap(A[i],A[largest]);
-        // Heapify the affected sub-tree
-        Heapify(A,n,largest);
+    if(largest!=i){
+        swap(arr[i], arr[largest]);
+        Heapify(largest,n,arr);
     }
 }
 
 
-void HeapSort(int A[],int n){
-    for (int i = n / 2 - 1; i >= 0; i--)
-        Heapify(A, n, i);
+void HeapSort(vector<int>& arr,int n){
+    for (int i= (n/2)-1; i>=0; i--)
+        Heapify(i,n,arr);
  
     // One by one extract an element from heap
-    for (int i = n-1; i >= 0; i--) {
+    for (int i= n-1; i>0; i--) {
         // Move current root to end(Deletion)
-        swap(A[0], A[i]);
+        swap(arr[0], arr[i]);
         // call max heapify on the reduced heap
-        Heapify(A, i, 0);
+        Heapify(0,i,arr);
     }
 }
 
 int main(){
     int n;
-    cout<<"Enter number of nodes in tree : ";
     cin>>n;
-    int A[n];
-    cout<<"Enter elements : "<<endl;
-    for(int i=0 ; i<n ; i++){
-        cin>>A[i];
-    }
-        
+    vector<int>arr(n);
     for(int i=0 ; i<n ; i++)
-        cout<<A[i]<<" ";
-    cout<<endl;
-    HeapSort(A,n);
+        cin>>arr[i];
+    HeapSort(arr,n);
     cout<<"HeapSort : "<<endl;
     for(int i=0;i<n;i++)
-        cout<<A[i]<<" ";
+        cout<<arr[i]<<" ";
     return 0;
 }
