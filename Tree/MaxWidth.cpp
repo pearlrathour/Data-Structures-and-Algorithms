@@ -2,8 +2,7 @@
 #include <queue>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int key;
     Node *left, *right;
 
@@ -15,8 +14,7 @@ struct Node
     }
 };
 
-Node *Insert(Node *root)
-{
+Node *Insert(Node *root){
     cout << "Enter value to be entered : ";
     int val;
     cin >> val;
@@ -33,20 +31,17 @@ Node *Insert(Node *root)
     return root;
 }
 
-int width(Node *root)
-{
+int width(Node *root){
     int w = 0;
     queue<pair<Node *, int>> q;
     q.push({root, 0});
 
-    while (!q.empty())
-    {
+    while (!q.empty()){
         int index = q.front().second;
         int l = q.size();
         int first, last;
 
-        for (int i = 0; i < l; i++)
-        {
+        for (int i = 0; i < l; i++){
             long int curr_index = q.front().second - index;
             Node *node = q.front().first;
             q.pop();

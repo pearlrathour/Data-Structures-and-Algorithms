@@ -9,8 +9,21 @@
 using namespace std;
 #define MOD 1000000007
 
-int solve(){
-
+ll solve(){
+	ll n;
+	cin>>n;
+	vector<ll>a(n);
+	fl(i,0,n) cin>>a[i];
+	ll count= 0, sum=0;
+    set<ll> s;
+    fl(i,0,n){
+        s.insert(a[i]);
+        sum += a[i];
+		ll highest_ele = *(--s.end());
+        if (highest_ele == (sum - highest_ele))
+        	count++;
+	}
+	return count;
 }
 
 int main() {

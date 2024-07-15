@@ -8,18 +8,15 @@ public:
     int val;
     Node *next;
 
-    Node(int x)
-    {
+    Node(int x){
         val = x;
         next = NULL;
     }
 };
 
-Node *Insert(Node *head, int val)
-{
+Node *Insert(Node *head, int val){
     Node *temp = new Node(val);
-    if (head == NULL)
-    {
+    if (head == NULL){
         temp->next = head;
         return temp;
     }
@@ -32,13 +29,11 @@ Node *Insert(Node *head, int val)
     return head;
 }
 
-void print(Node *head)
-{
+void print(Node *head){
     Node *curr = head;
     cout << endl
          << endl;
-    while (curr != NULL)
-    {
+    while (curr != NULL){
         cout << curr->val << "->";
         curr = curr->next;
     }
@@ -46,20 +41,16 @@ void print(Node *head)
          << endl;
 }
 
-Node *detectCycle(Node *head)
-{
+Node *detectCycle(Node *head){
     if (!head || !head->next)
         return NULL;
 
     Node *slow = head, *fast = head, *entry = head;
-    while (fast->next && fast->next->next)
-    {
+    while (fast->next && fast->next->next){
         slow = slow->next;
         fast = fast->next->next;
-        if (fast == slow)
-        {
-            while (slow != entry)
-            {
+        if (fast == slow){
+            while (slow != entry){
                 slow = slow->next;
                 entry = entry->next;
             }
@@ -69,15 +60,13 @@ Node *detectCycle(Node *head)
     return NULL;
 }
 
-int main()
-{
+int main(){
     Node *head = NULL;
     int n, val;
     cout << "Enter n: ";
     cin >> n;
     cout << "Enter nodes : \n";
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++){
         cin >> val;
         head = Insert(head, val);
     }

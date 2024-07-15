@@ -25,7 +25,7 @@ Node *rev(Node *head){
     return head;
 }
 
-//efficient
+//efficient O(N) O(1)
 Node *rev1(Node *head){
     Node *curr=head , *prev=NULL ,*next=NULL;
     while(curr != NULL){

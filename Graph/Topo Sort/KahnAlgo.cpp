@@ -10,8 +10,7 @@ void topologicalSort(vector<vector<int>> &adj, int nodes) {
 
     queue<int>q;
     for(int i=0; i<nodes; i++){
-        if(!indeg[i])
-            q.push(i);
+        if(!indeg[i]) q.push(i);
     }
 
     while(!q.empty()){
@@ -21,8 +20,7 @@ void topologicalSort(vector<vector<int>> &adj, int nodes) {
 
         for(auto i : adj[node]){
             indeg[i]--;
-            if(!indeg[i])
-                q.push(i);
+            if(!indeg[i]) q.push(i);
         }
     }
     

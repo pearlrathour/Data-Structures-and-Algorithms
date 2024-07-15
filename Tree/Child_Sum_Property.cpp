@@ -56,10 +56,6 @@ void LevelOrderTraversal(Node *root){
 		}
 	}
 }
-void reorder(Node* root){
-
-
-}
 
 void childsum(Node* root){
     if(!root)
@@ -80,8 +76,8 @@ void childsum(Node* root){
             root->right->key=root->key;
     }
 
-    reorder(root->left);
-    reorder(root->right);
+    childsum(root->left);
+    childsum(root->right);
 
     int tot=0;
     if(root->left)
