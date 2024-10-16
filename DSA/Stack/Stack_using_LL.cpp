@@ -5,10 +5,8 @@ using namespace std;
 
 struct Node{
     int data;
-    //self referential structure(address of next node)
     Node *next;
 
-    //constructor to initialise value
     Node(int x){
         data=x;
         next=NULL;
@@ -17,51 +15,24 @@ struct Node{
 
 Node *head=NULL;
 
-Node *push(Node *head,int val){
+void push(Node *head, int val){
     Node *temp=new Node(val);
-    if(head==NULL){
-        temp->next=NULL;
-        return temp; 
-    }
-    Node *curr=head;
-    while(curr->next != NULL)
-        curr=curr->next;
-    curr->next=temp;
-    temp->next=NULL;
-    return head;
+    temp->next= head;
+    head= temp;
+    cout<<head->data;
 }
 
 
-Node *pop(Node *head){
-    if(head == NULL)
-        return NULL;
-    else if(head->next == NULL){
-        delete head;
-        return NULL;
-    }
-    Node *curr=head;
-    while(curr->next->next != NULL){
-        curr=curr->next;
-    }
-    delete curr->next;
-    curr->next=NULL;
-    return head; 
+int pop(Node *head){
+    if(head == NULL) return -1;
+    int t= head->data;
+    head= head->next;
+    return t;
 }
 
-void peep(Node *head){
-    if(head == NULL){
-        cout<<"NULL"<<endl;
-        return;
-    }
-    else if(head->next== NULL){
-        cout<<head<<endl;
-        return;
-    }
-    Node *curr=head;
-    while(curr->next != NULL){
-        curr=curr->next;
-    }
-    cout<<curr->data<<endl; 
+int peep(Node *head){
+    if(head == NULL) return -1;
+    return head->data; 
 }
 
 
@@ -90,19 +61,17 @@ int main(){
             break;
 
         case 2:
-            cout <<"Enter Value to be entered" << endl;
+            cout <<"Enter Value to be entered : ";
             cin >> val;
-            head=push(head,val);
             display(head);
             break;
 
         case 3:
-            peep(head);
+            cout<<peep(head)<<endl;
             break;
 
         case 4:
-            head=pop(head);
-            display(head);
+            cout<<pop(head)<<endl;
             break;
 
         case 5:
